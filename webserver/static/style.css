@@ -1,0 +1,170 @@
+
+
+
+h1,h2,h3{
+    margin: 0;
+}
+
+       
+body{
+    letter-spacing: 3px;
+    font-family: 'Bebas Kai';
+
+    h1{
+        text-align: center;
+        margin: 50px auto;
+        font-size: 100px;
+        color: #fff;
+    }
+
+    background-image: url('webbg.jpeg');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background */
+}
+
+        /* Style the container */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch.large{
+            width: 90px;
+            height: 44px;
+        }
+
+        /* Hide default checkbox */
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* Style the toggle switch */
+        .toggle-switch .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-switch.large .slider{
+            border-radius: 14px;
+        }
+
+        .toggle-switch .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        .toggle-switch.large .slider:before{
+            height: 36px;
+            width: 36px;
+            border-radius: 30%;
+        }
+
+        /* On state */
+        .toggle-switch input:checked + .slider {
+            background-color: #0a3371;
+        }
+
+        .toggle-switch input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        .toggle-switch.large input:checked + .slider:before{
+            -webkit-transform: translateX(44px);
+            -ms-transform: translateX(44px);
+            transform: translateX(44px);
+        }
+
+
+
+        .system-row-wrapper{
+            width: 80%;
+            max-width: 1510px;
+            margin: 0 auto;
+            padding: 50px;
+            display: flex;
+            background-color: #fff;
+            border-radius: 30px;
+
+            .camera-wrapper{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50%;
+                margin-right: 30px;
+                position: relative;
+
+                img{
+                    position: absolute;
+                    height: 100%;
+                }
+        
+            }
+
+            .systemcontrol-wrapper{
+                width: 50%;
+
+                
+                .home-security-button{
+                    color: #0a3371;
+                    font-size: 20px;
+
+                    h2{
+                        margin-bottom: 16px;
+                    }
+                }
+
+                .control-button{
+                    margin-top: 20px;
+                    padding: 30px;
+                    border-radius: 30px;
+                    
+                }
+
+                .modules-switch-list{
+                    padding: 20px;
+                    margin: 0;
+
+                    .switch-item{
+                        margin-bottom: 40px;
+                    }
+
+                    h3{
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .disabled-section{
+                    opacity: 0.5;
+                    filter: grayscale(100%);
+                    pointer-events: none;
+                    color: #888;
+                    background-color: #f2f2f2;
+                }
+
+                .switch-item{
+                    list-style-type: none;
+                }
+            }
+        }

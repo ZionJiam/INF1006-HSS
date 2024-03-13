@@ -1,5 +1,4 @@
 from flask import Flask, render_template, Response
-from flask import Flask, render_template, Response
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import os
 
@@ -10,17 +9,43 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-# Route to trigger Python code
-@app.route('/trigger_python_code')
-def trigger_python_code():
+# Route to trigger Python code for the ENTIRE SYSTEM
+@app.route('/trigger_enable_system')
+def trigger_enable_system():
     # Python code to print something
-    print("Toggle switch toggled ON. Python code executed.")
+    print("Home Security System ENABLED. Python code executed.")
     return 'Python code executed successfully'
 
-@app.route('/trigger_toggle_off')
-def trigger_toggle_off():
+@app.route('/trigger_disable_system')
+def trigger_disable_system():
     # Python code to print something
-    print("Toggle switch toggled OFF. Python code executed.")
+    print("Home Security System DISABLED. Python code executed.")
+    return 'Python code executed successfully'
+
+# Route to trigger Python code for alarm module
+@app.route('/trigger_enable_alarm')
+def trigger_enable_alarm():
+    # Python code to print something
+    print("Alarm ENABLED. Python code executed.")
+    return 'Python code executed successfully'
+
+@app.route('/trigger_disable_alarm')
+def trigger_disable_alarm():
+    # Python code to print something
+    print("Alarm DISABLED. Python code executed.")
+    return 'Python code executed successfully'
+
+# Route to trigger Python code for light module
+@app.route('/trigger_enable_light')
+def trigger_enable_light():
+    # Python code to print something
+    print("light ENABLED. Python code executed.")
+    return 'Python code executed successfully'
+
+@app.route('/trigger_disable_light')
+def trigger_disable_light():
+    # Python code to print something
+    print("light DISABLED. Python code executed.")
     return 'Python code executed successfully'
 
 if __name__ == '__main__':
