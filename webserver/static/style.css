@@ -126,7 +126,7 @@ body{
             padding: 30px;
             display: flex;
             background-color: #fff;
-            border-radius: 30px;
+            border-radius: 20px;
 
             .home-security-button h2{
                 font-size: 26px;
@@ -243,7 +243,7 @@ body{
             max-width: 1000px;
             padding: 30px;
             background-color: #ffffff;
-            border-radius: 30px;
+            border-radius: 20px;
         }
 
         .camera-snap-wrapper .snap{
