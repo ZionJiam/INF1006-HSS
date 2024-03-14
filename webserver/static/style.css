@@ -5,22 +5,30 @@ h1,h2,h3{
     margin: 0;
 }
 
+
+#feed{
+    width: 100%;
+}
        
 body{
     letter-spacing: 3px;
     font-family: 'Bebas Kai';
-
-    h1{
-        text-align: center;
-        margin: 50px auto;
-        font-size: 100px;
-        color: #fff;
-    }
-
-    background-image: url('webbg.jpeg');
-    background-size: cover; /* Cover the entire background */
-    background-position: center; /* Center the background */
+    /*background-image: url('webbg.jpeg');
+    background-size: cover;  Cover the entire background */
+    /*background-position: center;  Center the background */
+    background-color: #e6e6e6;
+    max-width: 100%; /* Ensure container doesn't exceed viewport width */
 }
+
+.bg-red{
+    background-color: #ad2d29;
+}
+
+.no-shadow{
+    box-shadow: none !important;
+}
+
+
 
         /* Style the container */
         .toggle-switch {
@@ -81,7 +89,7 @@ body{
 
         /* On state */
         .toggle-switch input:checked + .slider {
-            background-color: #0a3371;
+            background-color: #cc201a;
         }
 
         .toggle-switch input:checked + .slider:before {
@@ -96,30 +104,46 @@ body{
             transform: translateX(44px);
         }
 
+        .logo-wrapper{
+            display: flex; /* Use flexbox layout */
+            justify-content: center; /* Center align items horizontally */
+            align-items: center; /* Center align items vertically */
+            width: 100%;
+            margin: 20px 0;
+
+        }
+
+        .logo{
+            max-width: 100px; /* Ensure logo doesn't exceed container width */
+        }
 
 
         .system-row-wrapper{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             width: 80%;
-            max-width: 1510px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 50px;
+            padding: 30px;
             display: flex;
             background-color: #fff;
             border-radius: 30px;
 
+            .home-security-button h2{
+                font-size: 26px;
+            }
+
             .camera-wrapper{
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 width: 50%;
                 margin-right: 30px;
                 position: relative;
+                overflow: hidden; /* Optional: Hide overflow */   
+            }
 
-                img{
+            .camera-wrapper img{
                     position: absolute;
-                    height: 100%;
-                }
-        
+                    width: 100%; /* Set the width of the image to fill the parent div */
+                    height: 100%; /* Set the height of the image to fill the parent div */
+                    object-fit: cover; /* Resize the image to cover the entire div while maintaining*/
             }
 
             .systemcontrol-wrapper{
@@ -127,7 +151,7 @@ body{
 
                 
                 .home-security-button{
-                    color: #0a3371;
+                    color: #cc201a;
                     font-size: 20px;
 
                     h2{
@@ -135,23 +159,54 @@ body{
                     }
                 }
 
-                .control-button{
+                .control-div{
                     margin-top: 20px;
-                    padding: 30px;
                     border-radius: 30px;
-                    
+                    padding: 20px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr; /* Two columns, each taking up 50% of the container */
+                    grid-gap: 10px; /* Optional: Gap between grid items */
+
+                    .control-div-child{
+                        width: 100%; /* Ensure child elements take up full width of their grid cell */
+                    }
+
+                    .security-div{
+                        border-right: 1px solid #cccccc52;
+                    }
+                }
+
+
+                .header{
+                    font-size:24px;
+                    font-weight: bolder;
                 }
 
                 .modules-switch-list{
                     padding: 20px;
+                    padding-left: 0px;
                     margin: 0;
+
 
                     .switch-item{
                         margin-bottom: 40px;
+                        display: flex;
+                        justify-content: space-between; /* Items are distributed with space between them */
+
                     }
 
-                    h3{
-                        margin-bottom: 10px;
+                    .button-h3{
+                        font-size: 20px;
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    .toggle-switch{
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-left: auto; /* Move the last inline-block item to the right edge */
+                        text-align: right; /* Center-align the child elements horizontally */
+
                     }
                 }
 
@@ -167,4 +222,72 @@ body{
                     list-style-type: none;
                 }
             }
+        }
+
+
+        .photo-wrapper{
+        }
+        .photo-wrapper .header{
+            text-align: center;
+            margin: 20px 0;
+            font-size: 20px;
+
+        }
+
+        .camera-snap-wrapper{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Auto-fill columns with minimum size of 200px */
+            gap: 10px; /* Gap between grid items */
+            width: 80%;
+            margin: 0 auto;
+            max-width: 1000px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 30px;
+        }
+
+        .camera-snap-wrapper .snap{
+            width: 100%; /* Ensure images take up full width of their grid cell */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        @media (max-width: 1024px) {
+
+            #feed{
+                position: static;
+            }
+
+            .system-row-wrapper{
+                flex-direction: column;
+                max-width: 100%;
+
+                .home-security-button h2{
+                        font-size: 20px;
+
+                }
+                .camera-wrapper{
+                    width: 100%;             
+
+                }
+
+                .live-feed{
+                    position: static;
+                }
+
+                .systemcontrol-wrapper{
+
+                    width: 100%;
+
+                    .modules-switch-list{
+                        .button-h3{
+                            font-size: 16px;
+                        }
+                    }
+
+                    .header{
+                        font-size: 18px;
+                    }
+                }
+            }
+ 
         }

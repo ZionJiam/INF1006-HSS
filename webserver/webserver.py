@@ -22,6 +22,37 @@ def trigger_disable_system():
     print("Home Security System DISABLED. Python code executed.")
     return 'Python code executed successfully'
 
+
+
+# Route to trigger Python code for light module FOR ROOM
+@app.route('/trigger_enable_lightRoom')
+def trigger_enable_lightRoom():
+    # Python code to print something
+    print("Room Light ENABLED. Python code executed.")
+    return 'Python code executed successfully'
+
+@app.route('/trigger_disable_lightRoom')
+def trigger_disable_lightRoom():
+    # Python code to print something
+    print("Room Light DISABLED. Python code executed.")
+    return 'Python code executed successfully'
+
+# Route to trigger Python code for fan module FOR ROOM
+@app.route('/trigger_enable_fanRoom')
+def trigger_enable_fanRoom():
+    # Python code to print something
+    print("Room Fan ENABLED. Python code executed.")
+    return 'Python code executed successfully'
+
+@app.route('/trigger_disable_fanRoom')
+def trigger_disable_fanRoom():
+    # Python code to print something
+    print("Room Fan DISABLED. Python code executed.")
+    return 'Python code executed successfully'
+
+
+
+
 # Route to trigger Python code for alarm module
 @app.route('/trigger_enable_alarm')
 def trigger_enable_alarm():

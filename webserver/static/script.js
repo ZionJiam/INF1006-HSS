@@ -3,8 +3,9 @@
 $(document).ready(function() {
     $('#systemSwitch').change(function() {
         if ($(this).is(':checked')) {
+            $('.control-div').removeClass('disabled-section');
+            $('.system-row-wrapper').removeClass('no-shadow');
 
-            $('.control-button').addClass('disabled-section');
 
 
             $.ajax({
@@ -18,9 +19,11 @@ $(document).ready(function() {
                 }
             });
         }else{
+            $('.control-div').addClass('disabled-section');
+            $('.system-row-wrapper').addClass('no-shadow');
 
-            $('.control-button').removeClass('disabled-section');
-
+            $('#alarmSwitch').prop('checked', false);
+            $('#lightSwitch').prop('checked', false);
 
             $.ajax({
                 url: '/trigger_disable_system',  // Flask route to trigger Python code
@@ -35,6 +38,58 @@ $(document).ready(function() {
         }
     });
 
+
+    $('#lightRoomSwitch').change(function() {
+        if ($(this).is(':checked')) {
+            $.ajax({
+                url: '/trigger_enable_lightRoom',  // Flask route to trigger Python code
+                type: 'GET',
+                success: function(response) {
+                    console.log('Toggle On: Python code executed successfully');
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }else{
+            $.ajax({
+                url: '/trigger_disable_lightRoom',  // Flask route to trigger Python code
+                type: 'GET',
+                success: function(response) {
+                    console.log('Toggle Off: Python code executed successfully');
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+    });
+
+    $('#fanRoomSwitch').change(function() {
+        if ($(this).is(':checked')) {
+            $.ajax({
+                url: '/trigger_enable_fanRoom',  // Flask route to trigger Python code
+                type: 'GET',
+                success: function(response) {
+                    console.log('Toggle On: Python code executed successfully');
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }else{
+            $.ajax({
+                url: '/trigger_disable_fanRoom',  // Flask route to trigger Python code
+                type: 'GET',
+                success: function(response) {
+                    console.log('Toggle Off: Python code executed successfully');
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+    });
 
     $('#alarmSwitch').change(function() {
         if ($(this).is(':checked')) {
