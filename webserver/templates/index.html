@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Switch</title>
+    <link href="https://fonts.cdnfonts.com/css/bebas-kai" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body class="body">
+    <div class="logo-wrapper">
+      <img
+        id="feed"
+        class="logo"
+        src="{{ url_for('static', filename='logo.png') }}"
+        alt="Camera Live Feed"
+      />
+    </div>
+
+    <div class="system-row-wrapper">
+      <div class="camera-wrapper">
+        <img
+          id="livefeed"
+          class="live-feed"
+          src="/proxy_feed"
+          alt="Camera Live Feed"
+        />
+      </div>
+      <div class="systemcontrol-wrapper">
+        <div class="switch-item home-security-button">
+          <h2>Guard Sync System</h2>
+          <label class="toggle-switch large">
+            <input type="checkbox" id="systemSwitch" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="control-div">
+          <div class="security-div control-div-child">
+            <div class="header">Smart Home</div>
+            <ul class="modules-switch-list">
+              <li class="switch-item">
+                <h3 class="button-h3">Fan</h3>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="fanRoomSwitch" />
+                  <span class="slider"></span>
+                </label>
+              </li>
+              <li class="switch-item">
+                <h3 class="button-h3">Light</h3>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="lightRoomSwitch" />
+                  <span class="slider"></span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="home-div control-div-child">
+            <div class="header">Home Security</div>
+            <ul class="modules-switch-list">
+              <li class="switch-item">
+                <h3 class="button-h3">Alarm</h3>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="alarmSwitch" checked />
+                  <span class="slider"></span>
+                </label>
+              </li>
+              <li class="switch-item">
+                <h3 class="button-h3">Light</h3>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="lightSwitch" checked />
+                  <span class="slider"></span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-wrapper">
+      <div class="header">Photos Snapped</div>
+
+      <div class="camera-snap-wrapper">
+        <div class="snap-1 snap">
+          <img
+            id="latest1"
+            class="live-feed"
+            src="{{ url_for('static', filename='dental_front.jpg') }}"
+            alt="Camera Live Feed"
+          />
+        </div>
+        <div class="snap-2 snap">
+          <img
+            id="latest2"
+            class="live-feed"
+            src="{{ url_for('static', filename='dental_front.jpg') }}"
+            alt="Camera Live Feed"
+          />
+        </div>
+        <div class="snap-3 snap">
+          <img
+            id="latest3"
+            class="live-feed"
+            src="{{ url_for('static', filename='dental_front.jpg') }}"
+            alt="Camera Live Feed"
+          />
+        </div>
+        <div class="snap-4 snap">
+          <img
+            id="latest4"
+            class="live-feed"
+            src="{{ url_for('static', filename='dental_front.jpg') }}"
+            alt="Camera Live Feed"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+      var socket = io.connect(
+        "http://" + document.domain + ":" + location.port
+      );
+
+      console.log(
+        "Connecting to the server: " + document.domain + ":" + location.port
+      );
+      socket.on("connect", function () {
+        console.log("Connected to the server");
+      });
+
+      socket.on("disconnect", function () {
+        console.log("Disconnected from the server");
+      });
+
+      socket.on("frontend", function (message) {
+        console.log("Received message: " + message);
+        switch (message) {
+          case "light on":
+            $("#lightRoomSwitch").prop("checked", true);
+            break;
+          case "light off":
+            $("#lightRoomSwitch").prop("checked", false);
+            break;
+          case "fan on":
+            $("#fanRoomSwitch").prop("checked", true);
+            break;
+          case "fan off":
+            $("#fanRoomSwitch").prop("checked", false);
+            break;
+          default:
+            console.log("Unknown command: " + message);
+        }
+      });
+    </script>
+  </body>
+</html>
